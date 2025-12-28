@@ -103,8 +103,8 @@
               </el-input>
             </el-form-item>
 
-            <el-form-item label="Gitee地址" prop="gitee">
-              <el-input v-model="form.gitee" placeholder="请输入Gitee地址">
+            <el-form-item label="Facebook" prop="gitee">
+              <el-input v-model="form.gitee" placeholder="请输入Facebook地址">
                 <template #prefix>
                   <el-icon>
                     <Platform />
@@ -113,8 +113,8 @@
               </el-input>
             </el-form-item>
 
-            <el-form-item label="QQ号" prop="qqNumber">
-              <el-input v-model="form.qqNumber" placeholder="请输入QQ号">
+            <el-form-item label="Telegram" prop="qqNumber">
+              <el-input v-model="form.qqNumber" placeholder="请输入Telegram号">
                 <template #prefix>
                   <el-icon>
                     <ChatDotRound />
@@ -123,8 +123,8 @@
               </el-input>
             </el-form-item>
 
-            <el-form-item label="QQ群" prop="qqGroup">
-              <el-input v-model="form.qqGroup" placeholder="请输入QQ群">
+            <el-form-item label="Instagram" prop="qqGroup">
+              <el-input v-model="form.qqGroup" placeholder="请输入Instagram号">
                 <template #prefix>
                   <el-icon>
                     <User />
@@ -133,8 +133,8 @@
               </el-input>
             </el-form-item>
 
-            <el-form-item label="微信" prop="wechat">
-              <el-input v-model="form.wechat" placeholder="请输入微信号">
+            <el-form-item label="X" prop="wechat">
+              <el-input v-model="form.wechat" placeholder="请输入X号">
                 <template #prefix>
                   <el-icon>
                     <ChatLineRound />
