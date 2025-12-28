@@ -203,7 +203,7 @@
                     <el-option label="Telegram" value="qq"/>
                     <el-option label="Instagram" value="qqGroup"/>
                     <el-option label="Github" value="github"/>
-                    <el-option label="Gitee" value="gitee"/>
+                    <el-option label="X" value="gitee"/>
                     <el-option label="微信" value="wechat"/>
                   </el-select>
                 </el-form-item>
