@@ -93,7 +93,7 @@
             <span class="tab-label">社交信息</span>
           </template>
           <el-form ref="formRef" :model="form" :rules="rules" label-width="120px">
-            <el-form-item label="Github地址" prop="github">
+            <el-form-item label="Github" prop="github">
               <el-input v-model="form.github" placeholder="请输入Github地址">
                 <template #prefix>
                   <el-icon>
@@ -143,8 +143,8 @@
               </el-input>
             </el-form-item>
 
-            <el-form-item label="邮箱" prop="email">
-              <el-input v-model="form.email" placeholder="请输入邮箱地址">
+            <el-form-item label="Email" prop="email">
+              <el-input v-model="form.email" placeholder="请输入email地址">
                 <template #prefix>
                   <el-icon>
                     <Message />
