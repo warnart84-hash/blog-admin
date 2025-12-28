@@ -199,12 +199,12 @@
               <el-col :span="12">
                 <el-form-item label="显示的社交信息" prop="showList">
                   <el-select v-model="showList" multiple placeholder="请选择要显示的社交信息">
-                    <el-option label="邮箱" value="email"/>
+                    <el-option label="Email" value="email"/>
                     <el-option label="Telegram" value="qq"/>
                     <el-option label="Instagram" value="qqGroup"/>
                     <el-option label="Github" value="github"/>
-                    <el-option label="X" value="gitee"/>
-                    <el-option label="微信" value="wechat"/>
+                    <el-option label="Facebook" value="gitee"/>
+                    <el-option label="X" value="wechat"/>
                   </el-select>
                 </el-form-item>
               </el-col>
