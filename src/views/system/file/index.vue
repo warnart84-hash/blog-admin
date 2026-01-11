@@ -89,7 +89,37 @@
                             :value="item.value" />
                     </el-radio-group>
                 </el-form-item>
-                <div v-if="ossConfigForm.platform !== 'local'">
+                <!-- CloudFlare R2 专用配置 -->
+                <div v-if="ossConfigForm.platform === 'cloudflare-r2'">
+                    <el-alert type="info" :closable="false" style="margin-bottom: 16px;">
+                        <template #title>
+                            <span>请在 CloudFlare 控制台 -> R2 -> 管理 R2 API 令牌 中获取以下信息</span>
+                        </template>
+                    </el-alert>
+                    <el-form-item label="Access Key ID" prop="accessKey">
+                        <el-input v-model="ossConfigForm.accessKey" placeholder="R2 API 令牌的 Access Key ID" />
+                    </el-form-item>
+                    <el-form-item label="Secret Access Key" prop="secretKey">
+                        <el-input v-model="ossConfigForm.secretKey" type="password" show-password placeholder="R2 API 令牌的 Secret Access Key" />
+                    </el-form-item>
+                    <el-form-item label="存储桶名称" prop="bucket">
+                        <el-input v-model="ossConfigForm.bucket" placeholder="R2 存储桶名称" />
+                    </el-form-item>
+                    <el-form-item label="S3 API 端点" prop="region">
+                        <el-input v-model="ossConfigForm.region" placeholder="https://<账户ID>.r2.cloudflarestorage.com" />
+                        <div class="form-tip">格式: https://你的账户ID.r2.cloudflarestorage.com</div>
+                    </el-form-item>
+                    <el-form-item label="公开访问域名" prop="domain">
+                        <el-input v-model="ossConfigForm.domain" placeholder="https://your-domain.com/" />
+                        <div class="form-tip">R2 自定义域名或 r2.dev 公开域名，需以 / 结尾</div>
+                    </el-form-item>
+                    <el-form-item label="存储基础路径" prop="basePath">
+                        <el-input v-model="ossConfigForm.basePath" placeholder="可选，如: upload/" />
+                    </el-form-item>
+                </div>
+
+                <!-- 其他云存储通用配置 -->
+                <div v-else-if="ossConfigForm.platform !== 'local'">
                     <el-form-item label="access-key" prop="accessKey">
                         <el-input v-model="ossConfigForm.accessKey" placeholder="请输入accessKey" />
                     </el-form-item>
@@ -102,14 +132,23 @@
                     <el-form-item label="地域" prop="region">
                         <el-input v-model="ossConfigForm.region" placeholder="请输入地域" />
                     </el-form-item>
+                    <el-form-item label="域名" prop="domain">
+                        <el-input v-model="ossConfigForm.domain" placeholder="请输入域名，/结尾" />
+                    </el-form-item>
+                    <el-form-item label="存储基础路径" prop="basePath">
+                        <el-input v-model="ossConfigForm.basePath" placeholder="请输入存储基础路径，/结尾" />
+                    </el-form-item>
                 </div>
 
-                <el-form-item label="域名" prop="domain">
-                    <el-input v-model="ossConfigForm.domain" placeholder="请输入域名，/结尾" />
-                </el-form-item>
-                <el-form-item label="存储基础路径" prop="basePath">
-                    <el-input v-model="ossConfigForm.basePath" placeholder="请输入存储基础路径，/结尾" />
-                </el-form-item>
+                <!-- 本地存储的域名和基础路径 -->
+                <div v-if="ossConfigForm.platform === 'local'">
+                    <el-form-item label="域名" prop="domain">
+                        <el-input v-model="ossConfigForm.domain" placeholder="请输入域名，/结尾" />
+                    </el-form-item>
+                    <el-form-item label="存储基础路径" prop="basePath">
+                        <el-input v-model="ossConfigForm.basePath" placeholder="请输入存储基础路径，/结尾" />
+                    </el-form-item>
+                </div>
                 <div v-if="ossConfigForm.platform === 'local'">
                     <el-form-item label="本地存储路径" prop="storagePath" label-width="120px">
                         <el-input v-model="ossConfigForm.storagePath" placeholder="请输入本地存储路径，/结尾,如 D:/Temp/" />
@@ -338,3 +377,12 @@ onMounted(() => {
     getOssConfig()
 })
 </script>
+
+<style scoped>
+.form-tip {
+    font-size: 12px;
+    color: #909399;
+    line-height: 1.5;
+    margin-top: 4px;
+}
+</style>
